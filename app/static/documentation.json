@@ -1,0 +1,410 @@
+{
+    "openapi": "3.0.0",
+    "info" : {
+        "title" : "Dashboard documentation",
+        "description" : "probation purposes",
+        "version" : "1.0.0"
+    },
+    "tags": [
+    {
+        "name" : "Simple Monitoring",
+        "description" : "Documentation For Dataset and Dashboard"
+    }
+
+    ],
+    "servers":[{
+        "url" : "http://127.0.0.1:5000/"
+    }],
+
+    "paths" : {
+        "/dataset/{id}" : {
+            
+            "put": {
+                "tags" : [
+                    {
+                        "tag" : "dataset"
+                    }
+                ],
+                "summary" : "update dataset",
+                "security": [
+                    {
+                    "bearerAuth" : []
+                }],
+                "parameters": [{
+                    "name" : "id",
+                    "in" : "path",
+                    "required" : "true",
+                    "type" : "String"
+                }],
+                "requestBody": {
+                    "required" : "true",
+                    "content" : {
+                        "application/json" : {
+                            "schema" : {
+                                "type" : "object",
+                                "$ref" : "#/components/schemas/request_body"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200" : {
+                        "description" : "json dataset and dashboard",
+                        "content" : {
+                            "application/json" : {
+                                "schema" : {
+                                    "$ref" : "#/components/schemas/response"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete" : {
+                "tags" : [
+                    {
+                        "tag" : "dataset"
+                    }
+                ],
+                "summary" : "ngehapus by Id",
+                "security": [
+                    {
+                    "bearerAuth" : []
+                }],
+                "parameters": [{
+                    "name" : "id",
+                    "in" : "path",
+                    "required" : "true",
+                    "type" : "String"
+                }],
+                
+                "responses": {
+                    "200" : {
+                        "description" : "json dataset and dashboard",
+                        "content" : {
+                            "application/json" : {
+                                "schema" : {
+                                    "$ref" : "#/components/schemas/response"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/dataset": {
+           
+            "post": {
+                "summary" : "api dataset",
+                "tags" : [
+                    {
+                        "tag" : "dataset"
+                    }
+                ],
+                "security": [
+                    {
+                    "bearerAuth" : []
+                }],
+                "requestBody": {
+                    "required" : "true",
+                    "content" : {
+                        "application/json" : {
+                            "schema" : {
+                                "type" : "object",
+                                "$ref" : "#/components/schemas/request_body"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200" : {
+                        "description" : "json dataset and dashboard",
+                        "content" : {
+                            "application/json" : {
+                                "schema" : {
+                                    "$ref" : "#/components/schemas/response"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get" : {
+                "tags" : [
+                    {
+                        "tag" : "dataset"
+                    }
+                ],
+                "summary" : "api dataset",
+                "parameters" : [
+                    {
+                        "name" : "where",
+                        "in" : "query",
+                        "schema" : {
+                            "type" :"string",
+                            "format" : "string",
+                            "minimum": "1" 
+                        }
+                    },
+                    {
+                        "name" : "limit",
+                        "in" : "query",
+                        "schema" : {
+                            "type" :"string",
+                            "format" : "string",
+                            "minimum": "1" 
+                        }
+                    },
+                    {
+                        "name" : "offset",
+                        "in" : "query",
+                        "schema" : {
+                            "type" :"string",
+                            "format" : "string",
+                            "minimum": "1" 
+                        }
+                    }
+
+                ],
+                "description" : "using swagger",
+                "responses": {
+                    "200" : {
+                        "description" : "json dataset and dashboard",
+                        "content" : {
+                            "application/json" : {
+                                "schema" : {
+                                    "$ref" : "#/components/schemas/response"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/dashboard/organisasi1" : {
+            "get" : {
+                "tags" : [
+                    {
+                        "tag" : "dashboard"
+                    }
+                ],
+                "summary" : "data organisasi tipe 1 ", 
+                "description" : "using swagger",
+                "responses": {
+                    "200" : {
+                        "description" : "json dataset and dashboard",
+                        "content" : {
+                            "application/json" : {
+                                "schema" : {
+                                    "$ref" : "#/components/schemas/response"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/dashboard/organisasi2" : {
+            "get" : {
+                "tags" : [
+                    {
+                        "tag" : "dashboard"
+                    }
+                ],
+                "summary" : "data organisasi tipe 2 ", 
+                "description" : "using swagger",
+                "responses": {
+                    "200" : {
+                        "description" : "json dataset and dashboard",
+                        "content" : {
+                            "application/json" : {
+                                "schema" : {
+                                    "$ref" : "#/components/schemas/response"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
+        "/dashboard/topik1" : {
+            "get" : {
+                "tags" : [
+                    {
+                        "tag" : "dashboard"
+                    }
+                ],
+                "summary" : "data topik tipe 1 ", 
+                "description" : "using swagger",
+                "responses": {
+                    "200" : {
+                        "description" : "json dataset and dashboard",
+                        "content" : {
+                            "application/json" : {
+                                "schema" : {
+                                    "$ref" : "#/components/schemas/response"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/dashboard/topik2" : {
+            "get" : {
+                "tags" : [
+                    {
+                        "tag" : "dashboard"
+                    }
+                ],
+                "summary" : "data topik tipe 2", 
+                "description" : "using swagger",
+                "responses": {
+                    "200" : {
+                        "description" : "json dataset and dashboard",
+                        "content" : {
+                            "application/json" : {
+                                "schema" : {
+                                    "$ref" : "#/components/schemas/response"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/dashboard/tahun1" : {
+            "get" : {
+                "tags" : [
+                    {
+                        "tag" : "dashboard"
+                    }
+                ],
+                "summary" : "data tahun tipe 1 ", 
+                "description" : "using swagger",
+                "responses": {
+                    "200" : {
+                        "description" : "json dataset and dashboard",
+                        "content" : {
+                            "application/json" : {
+                                "schema" : {
+                                    "$ref" : "#/components/schemas/response"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/dashboard/tahun2" : {
+            "get" : {
+                "tags" : [
+                    {
+                        "tag" : "dashboard"
+                    }
+                ],
+                "summary" : "data tahun tipe 2 ", 
+                "description" : "using swagger",
+                "responses": {
+                    "200" : {
+                        "description" : "json dataset and dashboard",
+                        "content" : {
+                            "application/json" : {
+                                "schema" : {
+                                    "$ref" : "#/components/schemas/response"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth" : {
+                "type" : "http",
+                "scheme" : "bearer",
+                "bearerFormat": "JWT"
+            }
+        },
+        "schemas" : {
+            "response":{
+                "type" : "object",
+                "properties":{
+                    "id": {
+                        "type" : "integer", 
+                        "format": "integer"
+                    },
+                    "judul" :{
+                        "type" : "string",
+                        "format" : "string"
+                    },
+                    "deskripsi": {
+                        "type" : "string",
+                        "format" : "string"
+                    }, 
+                    "tahun" : {
+                        "type" : "string",
+                        "format" : "string"
+                    },
+                    "topik": {
+                        "type" : "string",
+                        "format" : "string"
+                    },
+                    "organisasi": {
+                        "type" : "string",
+                        "format" : "string"
+                    },
+                    "cuid" : {
+                        "type" : "string",
+                        "format" : "string"
+                    },
+                    "muid" : {
+                        "type" : "string",
+                        "format" : "string"
+                    },
+                    "created_at" : {
+                        "type" : "string",
+                        "format" : "string"
+                    },
+                    "modified_at" : {
+                        "type" : "string",
+                        "format" : "string"
+                    }
+                }
+            },
+            "request_body" : {
+                "judul": {
+                    "type" : "string",
+                    "format" : "string"
+                },
+                "deskripsi": {
+                    "type" : "string",
+                    "format" : "string"
+                }, 
+                "tahun" : {
+                    "type" : "string",
+                    "format" : "string"
+                },
+                "topik": {
+                    "type" : "string",
+                    "format" : "string"
+                },
+                "organisasi": {
+                    "type" : "string",
+                    "format" : "string"
+                },
+                "cuid" : {
+                    "type" : "string",
+                    "format" : "string"
+                }
+            }
+
+        }
+    },
+    "security" : {
+        "bearerAuth": []
+    }
+}

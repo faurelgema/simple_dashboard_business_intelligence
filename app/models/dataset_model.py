@@ -12,11 +12,11 @@ class Dataset(db.Model):
     topik = db.Column('topik', db.String(255), nullable=False)
     organisasi = db.Column('organisasi', db.String(255), nullable=False)
     cuid = db.Column('cuid', db.Integer, nullable=False)
-    # muid = db.Column('muid', db.Integer, ForeignKey("user.id"), nullable=True)
-    muid = db.Column('muid', db.Integer, nullable=True)
+    muid = db.Column('muid', db.Integer, ForeignKey("user.id"), nullable=True)
+    # muid = db.Column('muid', db.Integer, nullable=True)
     created_at = db.Column('created_at', db.DateTime, default =datetime.utcnow)
     modified_at = db.Column('modified_at', db.DateTime, default =datetime.utcnow)
-    # user_id = relationship("Users", backref="dataset")
+    user_id = relationship("Users", backref="dataset")
 
     def __repr__(self) -> str:
         return f"<Judul {self.judul}>"

@@ -21,7 +21,7 @@ def login():
         
         data  = singleTransform(user)
     
-        access_token = create_access_token(data, fresh=True,expires_delta=timedelta(days = 1)).decode('utf-8')
+        access_token = create_access_token(data, fresh=True,expires_delta=timedelta(days = 1))
 
 
         return response_model.Ok("200", "Login successfull", {"access_token" : access_token}, [])
@@ -57,7 +57,6 @@ def singleTransform(user):
     data = {
         "id" : user.id,
         "username" : user.username,
-        "password" : user.password,
         "role" : user.role
     }
     return data

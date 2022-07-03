@@ -1,24 +1,29 @@
 from app import app
 from app.controller import dataset_controller
 from flask_jwt_extended import *
-
+from flask import request
     
 @app.route('/dataset', methods = ["GET"])
 def getAll():
-    return dataset_controller.getAll()
+    return dataset_controller.customization()
 
-@app.route('/dataset/<username>', methods=['POST'])
-def addDataset(username):
+@app.route('/dataset/weekly', methods = ["GET"])
+def getWeekly():
+    start_date = request.args.get('start_date')
+    end_date = request.args.get('end_date')
+    return dataset_controller.weekly_count(start_date, end_date)
+
+@app.route('/dataset', methods=['POST'])
+def addDataset():
     return dataset_controller.store()
 
-@app.route('/dataset/<username>/id=<id>', methods=['GET'])
-def getById(username, id):
-    return dataset_controller.takeById(id)
+@app.route('/dataset/<id>', methods=['GET', 'PUT', 'DELETE'])
+def methodstype(id):
+    if request.method == "GET":
+        return dataset_controller.takeById(id)
 
-@app.route('/dataset/<username>/<id>', methods=['DELETE'])
-def deleteDatasetById(username, id):
-    return dataset_controller.deleteById(id)
+    elif request.method == "DELETE":
+        return dataset_controller.deleteById(id)
 
-@app.route('/dataset/<username>/<id>', methods=['PUT'])
-def updateDatasetById(username, id):
-    return dataset_controller.update(id)
+    elif request.method == "PUT":   
+        return dataset_controller.update(id)

@@ -7,7 +7,7 @@ def Ok(RC, message, data, pagination):
         "data": data,
         "pagination": pagination
     }
-    return make_response(jsonify(response_message)), 200
+    return make_response(jsonify(response_message)), RC
 
 def BadRequest(RC, message, data):
     response_message = {
@@ -15,4 +15,4 @@ def BadRequest(RC, message, data):
         "message": message,
         "data": data
     }
-    return make_response(jsonify(response_message)), 400
+    return make_response(jsonify(response_message)), RC
